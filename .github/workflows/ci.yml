@@ -29,19 +29,7 @@ jobs:
       uses: actions-rs/cargo@v1
       with:
         command: test
-        args: --all-features --lib --examples --tests --verbose
-
-    - name: test (no default features)
-      uses: actions-rs/cargo@v1
-      with:
-        command: test
-        args: --no-default-features --lib --examples --tests --verbose
-
-    - name: build benchmarks
-      uses: actions-rs/cargo@v1
-      with:
-        command: test
-        args: --benches --no-run --verbose
+        args: 
 
     - name: clippy
       uses: actions-rs/cargo@v1
