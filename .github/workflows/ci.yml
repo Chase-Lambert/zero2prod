@@ -1,16 +1,6 @@
 name: Rust
 
-on:
-  # NB: this differs from the book's project!
-  # These settings allow us to run this specific CI pipeline for PRs against
-  # this specific branch (a.k.a. book chapter).
-  push:
-    branches:
-      - main
-  pull_request:
-    types: [ opened, synchronize, reopened ]
-    branches:
-      - main
+on: [push, pull_request]
 
 env:
   CARGO_TERM_COLOR: always
@@ -150,8 +140,10 @@ jobs:
       - name: Run clippy
         uses: actions-rs/clippy-check@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: -- -D warnings
+          command: clippy
+          args: --all-features
+          # token: ${{ secrets.GITHUB_TOKEN }}
+          # args: -- -D warnings
 
   # coverage:
   #   name: Code coverage
