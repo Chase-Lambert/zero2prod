@@ -22,7 +22,7 @@ pub async fn subscribe(form: Form<FormData>, pool: web::Data<PgPool>) -> HttpRes
         form.name,
         Utc::now()
     )
-    .execute(pool.get_ref())
+    .execute(pool.as_ref())
     .await
     {
         Ok(_) => HttpResponse::Ok().finish(),
